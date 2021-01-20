@@ -102,6 +102,33 @@ end
 
 class BookInStock
 # YOUR CODE HERE
+  def initialize(isbn, price)  
+    # Instance variables
+    raise ArgumentError.new(
+    "ISBN cannot be empty"
+    ) if isbn.to_s.strip.empty?
+    raise ArgumentError.new(
+    "Price annot be 0 or less than 0"
+    ) if price <= 0
+    @isbn = isbn  
+    @price = price  
+  end  
+  def isbn
+    @isbn
+  end
+  def isbn=(new_isbn)
+    @isbn = new_isbn
+  end
+  def price
+    @price
+  end
+  def price=(new_price)
+    @price = new_price
+  end
+
+  def price_as_string
+    return "$%0.2f" % [@price]
+  end
 end
 
 puts sum_to_n? [3],2   
