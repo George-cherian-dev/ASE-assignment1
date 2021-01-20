@@ -52,14 +52,50 @@ end
 
 def hello(name)
   # YOUR CODE HERE
+  return "Hello, "+name
 end
 
 def starts_with_consonant? s
   # YOUR CODE HERE
+  s = s.upcase
+  first_char = s[0]
+  vowels = ['A', 'E', 'I', 'O', 'U']
+  if s.to_s.strip.empty?
+    return false
+  end
+  if first_char.match?(/[[:alpha:]]/)
+    
+    if vowels.any? { |vowel| vowel == first_char }
+      return false
+    end
+    return true
+  end
+  return false
 end
 
 def binary_multiple_of_4? s
   # YOUR CODE HERE
+  if s.to_s.strip.empty?
+    return false
+  end
+  if s.delete('01') == ''
+    last_two_char = ""
+    index = s.length
+    loopcounter = 0
+    while index >= 0 do
+      loopcounter = loopcounter + 1
+      index = index - 1
+      last_two_char = last_two_char + s[index]
+      if loopcounter == 2
+        break
+      end
+    end
+    if last_two_char == "00" or last_two_char == "0"
+      return true
+    end
+    return false
+  end
+  return false
 end
 
 # Part 3
